@@ -1,16 +1,19 @@
 export default `
   type User {
-    id: String!
-    name: String!
     email: String!
+    name: String!
+    cart: Cart!    
   }
   type Query {
-    user(id: String!): User
+    user(email: String!): User
     users: [User]
   }
   type Mutation {
-    addUser(id: String!, name: String!, email: String!): User
-    editUser(id: String, name: String, email: String): User
-    deleteUser(id: String, name: String, email: String): User
+    addUser(email: String!, name: String!): User
+    editUser(email: String, name: String): User
+    deleteUser(email: String, name: String): User
+    addToCart(email: String, product_id: Int, amount: Int) : User
+    checkoutCart(email: String) : User
+    clearCart(email: String) : User
   }
 `;
