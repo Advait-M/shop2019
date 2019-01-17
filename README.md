@@ -79,6 +79,7 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 
 ## Known Limitations
 - Editing product's price while product is in a user's cart will not affect that user's cart total cost.
+- Floating-point arithmetic issues when dealing with floats i.e. cart total cost's may be imprecise.
 
 # Schema Types
 
