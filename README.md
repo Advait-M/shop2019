@@ -16,6 +16,8 @@ The following documentation outlines the use of a Web API created for Shopify's 
 
 ### Checkout shopping cart
 
+Note: If multiple users add items to their cart and then sequentially start checking out items, it is possible a user that checks out an item at a later time may not actually be able to buy the item since there is no longer sufficient stock. In this case, the later user’s cart is cleared and an appropriate error message is returned.
+
 ### Query all users
 ```javascript
 query {
