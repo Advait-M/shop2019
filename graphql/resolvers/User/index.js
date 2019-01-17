@@ -50,6 +50,9 @@ export default {
       });
     },
     addToCart: (root, { email, product_id, amount }) => {
+      if (amount === undefined) {
+        amount = 1;
+      }
       return new Promise((resolve, reject) => {
         if (amount <= 0) {
           reject("Must add positive amount of products to cart.");

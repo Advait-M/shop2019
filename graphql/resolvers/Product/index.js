@@ -40,11 +40,17 @@ export default {
       });
     },    
     reduceProduct: (root, { id, amount }) => {
+      if (amount === undefined) {
+        amount = 1;
+      }
       return new Promise((resolve, reject) => {
         Product.findOne({ id: id }).exec(
           (err, res) => {
             if (err) {
               reject(err);
+            }
+            if (amount > res.inventory_count) {
+              reject("Cannot remove " + amount + " products since there are only " + res.inventory_count + " products in stock.");
             }
             Product.findOneAndUpdate({ id: id }, { $set: { inventory_count: res.inventory_count - amount } }).exec(
               (err, res) => {
@@ -55,23 +61,10 @@ export default {
         );
       });
     },
-    reduceProductByOne: (root, { id }) => {
-      return new Promise((resolve, reject) => {
-        Product.findOne({ id: id }).exec(
-          (err, res) => {
-            if (err) {
-              reject(err)
-            }
-            Product.findOneAndUpdate({ id: id }, { $set: { inventory_count: res.inventory_count - 1 } }).exec(
-              (err, res) => {
-                err ? reject(err) : resolve(res);
-              }
-            );
-          }
-        );
-      });
-    },
     increaseProduct: (root, { id, amount }) => {
+      if (amount === undefined) {
+        amount = 1;
+      }
       return new Promise((resolve, reject) => {
         Product.findOne({ id: id }).exec(
           (err, res) => {
@@ -79,22 +72,6 @@ export default {
               reject(err)
             }
             Product.findOneAndUpdate({ id: id }, { $set: { inventory_count: res.inventory_count + amount } }).exec(
-              (err, res) => {
-                err ? reject(err) : resolve(res);
-              }
-            );
-          }
-        );
-      });
-    },
-    increaseProductByOne: (root, { id }) => {
-      return new Promise((resolve, reject) => {
-        Product.findOne({ id: id }).exec(
-          (err, res) => {
-            if (err) {
-              reject(err)
-            }
-            Product.findOneAndUpdate({ id: id }, { $set: { inventory_count: res.inventory_count + 1 } }).exec(
               (err, res) => {
                 err ? reject(err) : resolve(res);
               }
