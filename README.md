@@ -127,12 +127,12 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">name</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -142,12 +142,7 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">name</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -157,12 +152,12 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">product_id</td>
-<td valign="top"><a href="#int">Int</a></td>
+<td valign="top"><a href="#int">Int</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -177,7 +172,7 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -187,7 +182,7 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -227,17 +222,17 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">price</td>
-<td valign="top"><a href="#float">Float</a></td>
+<td valign="top"><a href="#float">Float</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">inventory_count</td>
-<td valign="top"><a href="#int">Int</a></td>
+<td valign="top"><a href="#int">Int</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -251,28 +246,8 @@ query {
 <td></td>
 </tr>
 <tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>reduceProductByOne</strong></td>
-<td valign="top"><a href="#product">Product</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">id</td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
 <tr>
@@ -286,28 +261,8 @@ query {
 <td></td>
 </tr>
 <tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>increaseProductByOne</strong></td>
-<td valign="top"><a href="#product">Product</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">id</td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
 <tr>
@@ -318,21 +273,6 @@ query {
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">price</td>
-<td valign="top"><a href="#float">Float</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">inventory_count</td>
-<td valign="top"><a href="#int">Int</a></td>
 <td></td>
 </tr>
 </tbody>
