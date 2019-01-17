@@ -1,4 +1,7 @@
-# Shop 2019
+# Shopify Backend Challenge 2019
+### By Advait Maybhate
+
+# Documentation
 
 ## Examples
 
