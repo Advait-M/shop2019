@@ -1,8 +1,16 @@
 # Shop 2019
 
 ## Examples
-Query all users
 
+### Remove item(s) from inventory
+
+### Add item(s) from inventory
+
+### Purchase item(s) (add to shopping cart)
+
+### Checkout shopping cart
+
+### Query all users
 ```javascript
 query {
   users {
