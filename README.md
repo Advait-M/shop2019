@@ -1,6 +1,9 @@
 # Shopify Backend Challenge 2019
 ### By Advait Maybhate
 
+# Summary
+The following documentation outlines the use of a Web API created for Shopify's backend developer 2019 internship application. The API is built using graphql and can be accessed at `https://shop2019.herokuapp.com/graphql` with sample queries taking the form of `https://shop2019.herokuapp.com/graphql/?query=*INSERT GRAPHQL QUERY HERE*`. Examples of sample queries and mutations are provided in addition to a detailed description of the schema itself.
+
 # Documentation
 
 ## Examples
@@ -29,6 +32,8 @@ query {
   }
 }
 ```
+
+Note: Mutations return original objects before mutations are applied! You must query once again to obtain the mutated object's details, if the mutations were successful!
 
 # Schema Types
 
