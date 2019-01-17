@@ -24,7 +24,6 @@ export default {
   },
   Mutation: {
     addUser: (root, { email, name }) => {
-      // const newCart = new Cart({ cart_items: [], cart_total: 0 });
       const newUser = new User({ email, name, cart: { cart_items: [], cart_total_cost: 0 } });
 
       return new Promise((resolve, reject) => {
@@ -56,6 +55,7 @@ export default {
       return new Promise((resolve, reject) => {
         if (amount <= 0) {
           reject("Must add positive amount of products to cart.");
+          return;
         }
         Product.findOne({ id: product_id }).exec(
           (err, resProduct) => {
@@ -70,12 +70,13 @@ export default {
                 }
 
                 if (amount > resProduct.inventory_count) {
-                  reject("Not enough inventory at the moment, sorry!")
+                  reject("Not enough inventory at the moment, sorry!");
                   return;
                 }
 
-                let cur_cart = resUser.cart
-                let found = false
+                let cur_cart = resUser.cart;
+                let found = false;
+
                 for (let i = 0; i < cur_cart.cart_items.length; i++) {
                   let cart_item = cur_cart.cart_items[i]
                   if (cart_item.product_id === product_id){
@@ -105,6 +106,57 @@ export default {
           });
         }
       );
+    },
+    removeFromCart: (root, { email, product_id, amount }) => {
+      if (amount === undefined) {
+        amount = 1;
+      }
+      return new Promise((resolve, reject) => {
+        Product.findOne({ id: product_id }).exec(
+          (err, resProduct) => {
+            if (err) {
+              reject(err);
+            }
+            User.findOne({ email: email }).exec(
+              (err, resUser) => {
+                if (err) {
+                  reject(err);
+                  return;
+                }
+
+                let cur_cart = resUser.cart;
+                let found = false;
+
+                for (let i = 0; i < resUser.cart.cart_items.length; i++) {
+                  if (resUser.cart.cart_items[i].product_id === product_id) {
+                    found = true;
+                    
+                    if (resUser.cart.cart_items[i].amount < amount) {
+                      reject("Cannot remove desired amount since it is greater than user's current amount in cart.")
+                      return;
+                    }
+                    else {                      
+                      cur_cart.cart_items[i].amount -= amount;
+                      cur_cart.cart_total_cost -= amount * resProduct.price;
+
+                      User.findOneAndUpdate({ email: email }, { $set: { cart: cur_cart } }).exec(
+                        (err, res) => {
+                          err ? reject(err) : resolve(res);
+                          return;
+                        }
+                      );
+                    }
+                  }
+                }
+                if (!found) {
+                  reject("Product not in user's cart!")
+                  return;
+                }                
+              }
+            );
+          }
+        );
+      });
     },
     checkoutCart: (root, { email }) => {
       return new Promise((resolve, reject) => {

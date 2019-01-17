@@ -8,6 +8,7 @@ export default `
   type Query {
     product(id: Int!): Product
     products: [Product]
+    productsWithInventory: [Product]
   }
   type Mutation {
     addProduct(id: Int!, title: String!, price: Float!, inventory_count: Int!): Product

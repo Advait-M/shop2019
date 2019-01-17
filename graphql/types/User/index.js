@@ -13,6 +13,7 @@ export default `
     editUser(email: String!, name: String!): User
     deleteUser(email: String!): User
     addToCart(email: String!, product_id: Int!, amount: Int) : User
+    removeFromCart(email: String!, product_id: Int!, amount: Int) : User
     checkoutCart(email: String!) : User
     clearCart(email: String!) : User
   }
