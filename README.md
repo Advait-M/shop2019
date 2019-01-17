@@ -142,6 +142,11 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 <td valign="top">[<a href="#product">Product</a>]</td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>productsWithInventory</strong></td>
+<td valign="top">[<a href="#product">Product</a>]</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
@@ -198,6 +203,26 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>addToCart</strong></td>
+<td valign="top"><a href="#user">User</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">email</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">product_id</td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">amount</td>
+<td valign="top"><a href="#int">Int</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>removeFromCart</strong></td>
 <td valign="top"><a href="#user">User</a></td>
 <td></td>
 </tr>
