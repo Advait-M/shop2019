@@ -1,4 +1,10 @@
-# Shop 2019
+# Shopify Backend Challenge 2019
+### By Advait Maybhate
+
+# Summary
+The following documentation outlines the use of a Web API created for Shopify's backend developer 2019 internship application. The API is built using **Node.js** and **MongoDB** (using mLab to host the database) with the **GraphQL** language and can be accessed at `https://shop2019.herokuapp.com/graphql` with sample queries taking the form of `https://shop2019.herokuapp.com/graphql/?query=*INSERT GRAPHQL QUERY HERE*`. Examples of sample queries and mutations are provided in addition to a detailed description of the schema itself.
+
+# Documentation
 
 ## Examples
 
@@ -7,10 +13,50 @@
 ### Add item(s) from inventory
 
 ### Purchase item(s) (add to shopping cart)
+Request:
+```javascript
+mutation {
+  addToCart(email: "dan@dan.com", product_id: 1, amount: 2) {
+    email,
+    name,
+    cart {
+      cart_items {
+        product_id
+        amount
+      }
+      cart_total_cost
+    }
+  }
+}
+```
+
+Example Result (returns object before mutation is applied):
+```javascript
+{
+  "data": {
+    "addToCart": {
+      "email": "bob@gmail.com",
+      "name": "Bob Smith",
+      "cart": {
+        "cart_items": [
+          {
+            "product_id": 1,
+            "amount": 1
+          }
+        ],
+        "cart_total_cost": 50.15
+      }
+    }
+  }
+}
+```
 
 ### Checkout shopping cart
 
+Note: If multiple users add items to their cart and then sequentially start checking out items, it is possible a user that checks out an item at a later time may not actually be able to buy the item since there is no longer sufficient stock. In this case, the later user’s cart is cleared and an appropriate error message is returned.
+
 ### Query all users
+Request:
 ```javascript
 query {
   users {
@@ -26,6 +72,14 @@ query {
   }
 }
 ```
+
+Note: Mutations return original objects before mutations are applied! You must query once again to obtain the mutated object's details, if the mutations were successful!
+
+Note 2: - If checking out a cart results in a product that has insufficient stock being requested then the user's entire cart is cleared and the request is rejected.
+
+## Known Limitations
+- Editing product's price while product is in a user's cart will not affect that user's cart total cost.
+- Floating-point arithmetic issues when dealing with floats i.e. a cart total cost's may be imprecise.
 
 # Schema Types
 
@@ -124,12 +178,12 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">name</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -139,12 +193,7 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">name</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -154,12 +203,12 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">product_id</td>
-<td valign="top"><a href="#int">Int</a></td>
+<td valign="top"><a href="#int">Int</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -174,7 +223,7 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -184,7 +233,7 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -224,17 +273,17 @@ query {
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">price</td>
-<td valign="top"><a href="#float">Float</a></td>
+<td valign="top"><a href="#float">Float</a>!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">inventory_count</td>
-<td valign="top"><a href="#int">Int</a></td>
+<td valign="top"><a href="#int">Int</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -248,28 +297,8 @@ query {
 <td></td>
 </tr>
 <tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>reduceProductByOne</strong></td>
-<td valign="top"><a href="#product">Product</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">id</td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
 <tr>
@@ -283,28 +312,8 @@ query {
 <td></td>
 </tr>
 <tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>increaseProductByOne</strong></td>
-<td valign="top"><a href="#product">Product</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">id</td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
 <td></td>
 </tr>
 <tr>
@@ -315,21 +324,6 @@ query {
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">title</td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">price</td>
-<td valign="top"><a href="#float">Float</a></td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">inventory_count</td>
-<td valign="top"><a href="#int">Int</a></td>
 <td></td>
 </tr>
 </tbody>
