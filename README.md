@@ -13,12 +13,50 @@ The following documentation outlines the use of a Web API created for Shopify's 
 ### Add item(s) from inventory
 
 ### Purchase item(s) (add to shopping cart)
+Request:
+```javascript
+mutation {
+  addToCart(email: "dan@dan.com", product_id: 1, amount: 2) {
+    email,
+    name,
+    cart {
+      cart_items {
+        product_id
+        amount
+      }
+      cart_total_cost
+    }
+  }
+}
+```
+
+Example Result (returns object before mutation is applied):
+```javascript
+{
+  "data": {
+    "addToCart": {
+      "email": "bob@gmail.com",
+      "name": "Bob Smith",
+      "cart": {
+        "cart_items": [
+          {
+            "product_id": 1,
+            "amount": 1
+          }
+        ],
+        "cart_total_cost": 50.15
+      }
+    }
+  }
+}
+```
 
 ### Checkout shopping cart
 
 Note: If multiple users add items to their cart and then sequentially start checking out items, it is possible a user that checks out an item at a later time may not actually be able to buy the item since there is no longer sufficient stock. In this case, the later user’s cart is cleared and an appropriate error message is returned.
 
 ### Query all users
+Request:
 ```javascript
 query {
   users {
