@@ -75,6 +75,11 @@ query {
 
 Note: Mutations return original objects before mutations are applied! You must query once again to obtain the mutated object's details, if the mutations were successful!
 
+Note 2: - If checking out a cart results in a product that has insufficient stock being requested then the user's entire cart is cleared and the request is rejected.
+
+## Known Limitations
+- Editing product's price while product is in a user's cart will not affect that user's cart total cost.
+
 # Schema Types
 
 <details>
