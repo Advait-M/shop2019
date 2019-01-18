@@ -115,37 +115,37 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 <tr>
 <td colspan="2" valign="top"><strong>user</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>Returns desired information of a single user</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Valid email associated with user</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>users</strong></td>
 <td valign="top">[<a href="#user">User</a>]</td>
-<td></td>
+<td>Returns all users in database</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>product</strong></td>
 <td valign="top"><a href="#product">Product</a></td>
-<td></td>
+<td>Returns a specific product's information</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Valid product ID</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>products</strong></td>
 <td valign="top">[<a href="#product">Product</a>]</td>
-<td></td>
+<td>Returns all products in database</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>productsWithInventory</strong></td>
 <td valign="top">[<a href="#product">Product</a>]</td>
-<td></td>
+<td>Returns all products in database with non-zero inventory i.e. positive inventory</td>
 </tr>
 </tbody>
 </table>
@@ -164,192 +164,192 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 <tr>
 <td colspan="2" valign="top"><strong>addUser</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>Add a new user</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Email of user (cannot duplicate existing emails)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">name</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Name of user</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>editUser</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>Allows for user's name to be edited (email cannot be edited)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Valid email (email cannot be changed)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">name</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>New name for user</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>deleteUser</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>Deletes a user from the database</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Valid email of user to delete</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>addToCart</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>Allows for addition of a valid product with specified amount to user's cart. If product is already in cart, the desired amount is simply added, otherwise the product is added to the cart (also updates cart's total cost).</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Valid email associated with desired user</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">product_id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Must be a valid product ID</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>Defaults to 1, amount of products to add to cart</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>removeFromCart</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>Allows for removal of specific products with desired amounts from user's cart (reduces cart's total cost)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Valid email associated with desired user</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">product_id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Must be a valid product ID (that is present in the cart of specified user)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>Defaults to 1, amount of product to remove from cart</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>checkoutCart</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>"Checks out" the cart of the specified user (reduces relevant inventory count)- note: does not allow check-out if there is not sufficient inventory available, in which case the cart is cleared</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Email of the user whose cart should be checked out</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>clearCart</strong></td>
 <td valign="top"><a href="#user">User</a></td>
-<td></td>
+<td>Completely clears the cart of specified user</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">email</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Email of the user whose cart should be cleared</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>addProduct</strong></td>
 <td valign="top"><a href="#product">Product</a></td>
-<td></td>
+<td>Create and add a new product to the database</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>ID of product (cannot be a duplicate of any existing IDs)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">title</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Title of product</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">price</td>
 <td valign="top"><a href="#float">Float</a>!</td>
-<td></td>
+<td>Price of product</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">inventory_count</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Initial inventory count</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>editProduct</strong></td>
 <td valign="top"><a href="#product">Product</a></td>
-<td></td>
+<td>Overwrites product information with desired values (cannot change product IDs)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Must be valid product ID (you cannot edit the product ID)</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">title</td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>New title</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">price</td>
 <td valign="top"><a href="#float">Float</a>!</td>
-<td></td>
+<td>New price</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">inventory_count</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>New inventory count</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>reduceProduct</strong></td>
 <td valign="top"><a href="#product">Product</a></td>
-<td></td>
+<td>Decreases amount of inventory of a specific product</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Must be a valid product ID</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>Defaults to 1, or can be specified</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>increaseProduct</strong></td>
 <td valign="top"><a href="#product">Product</a></td>
-<td></td>
+<td>Increases amount of inventory of a specific product</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Must be a valid product ID</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">amount</td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>Defaults to 1, or can be specified</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>deleteProduct</strong></td>
 <td valign="top"><a href="#product">Product</a></td>
-<td></td>
+<td>Completely deletes a product</td>
 </tr>
 <tr>
 <td colspan="2" align="right" valign="top">id</td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Must be a valid product ID</td>
 </tr>
 </tbody>
 </table>
@@ -371,12 +371,12 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 <tr>
 <td colspan="2" valign="top"><strong>cart_items</strong></td>
 <td valign="top">[<a href="#cartitem">CartItem</a>]!</td>
-<td></td>
+<td>Array storing details of each item in the cart (product IDs and amounts)</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>cart_total_cost</strong></td>
 <td valign="top"><a href="#float">Float</a>!</td>
-<td></td>
+<td>Stores total cost of cart (non-negative)</td>
 </tr>
 </tbody>
 </table>
@@ -396,12 +396,12 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 <tr>
 <td colspan="2" valign="top"><strong>product_id</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Product ID (must be linked to valid product)</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>amount</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Amount of product</td>
 </tr>
 </tbody>
 </table>
@@ -421,22 +421,22 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 <tr>
 <td colspan="2" valign="top"><strong>id</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Product ID (must be unique)</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>title</strong></td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Title of the product</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>price</strong></td>
 <td valign="top"><a href="#float">Float</a>!</td>
-<td></td>
+<td>Price of the product</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>inventory_count</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>Available inventory count (non-negative)</td>
 </tr>
 </tbody>
 </table>
@@ -456,17 +456,17 @@ Note 2: - If checking out a cart results in a product that has insufficient stoc
 <tr>
 <td colspan="2" valign="top"><strong>email</strong></td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Email of the user (must be unique)</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>name</strong></td>
 <td valign="top"><a href="#string">String</a>!</td>
-<td></td>
+<td>Name of the user</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>cart</strong></td>
 <td valign="top"><a href="#cart">Cart</a>!</td>
-<td></td>
+<td>Stores cart items and the cart's total cost</td>
 </tr>
 </tbody>
 </table>
