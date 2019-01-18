@@ -6,9 +6,35 @@ The following documentation outlines the use of a Web API created for Shopify's 
 
 # Documentation
 
-## Examples
+## Few Examples
+Please note this is not an exhaustive list of the API's abilities, just some examples to help query the API.
 
 ### Remove item(s) from inventory
+Request:
+```javascript
+mutation {
+  reduceProduct(id: 3, amount: 5) {
+    id
+    title
+    price
+    inventory_count
+  }
+}
+```
+
+Result (before mutation):
+```javascript
+{
+  "data": {
+    "reduceProduct": {
+      "id": 3,
+      "title": "phone",
+      "price": 199.99,
+      "inventory_count": 47
+    }
+  }
+}
+```
 
 ### Add item(s) to inventory
 Adding a new product request:
@@ -182,6 +208,47 @@ Result:
           "cart_items": [],
           "cart_total_cost": 0
         }
+      }
+    ]
+  }
+}
+```
+
+### Query all products with non-zero inventory
+Request:
+```javascript
+query {
+  productsWithInventory {
+    id
+    price
+    title
+    inventory_count
+  }
+}
+```
+
+Result:
+```javascript
+{
+  "data": {
+    "productsWithInventory": [
+      {
+        "id": 2,
+        "price": 60.15,
+        "title": "shoes",
+        "inventory_count": 5
+      },
+      {
+        "id": 1,
+        "price": 10.5,
+        "title": "hat",
+        "inventory_count": 5
+      },
+      {
+        "id": 3,
+        "price": 199.99,
+        "title": "phone",
+        "inventory_count": 42
       }
     ]
   }
