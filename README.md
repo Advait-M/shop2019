@@ -4,6 +4,16 @@
 # Summary
 The following documentation outlines the use of a Web API created for Shopify's backend developer 2019 internship application. The API is built using **Node.js** and **MongoDB** (using **mLab** to host the database and **Heroku** to host the server) with the **GraphQL** language and can be accessed at `https://shop2019.herokuapp.com/graphql` with sample queries taking the form of `https://shop2019.herokuapp.com/graphql/?query=*INSERT GRAPHQL QUERY HERE*`. Examples of sample queries and mutations are provided in addition to a detailed description of the schema itself.
 
+### Implemented Features
+- GraphQL API
+- User system
+- Cart system
+  - Ability to check-out carts
+  - Ability to add items or remove items from cart
+- Products with title, price, and inventory_count
+- Ability to query users, products and products with positive inventory count
+
+
 # Documentation
 
 ## Few Examples
