@@ -99,7 +99,48 @@ Example Result (returns object before mutation is applied):
 }
 ```
 
-### Checkout shopping cart
+### Check-out shopping cart
+Request:
+```javascript
+mutation {
+  checkoutCart(email: "james@gmail.com") {
+    email,
+    name,
+    cart {
+      cart_items {
+        product_id
+        amount
+      }
+      cart_total_cost
+    }
+  }
+}
+```
+
+Result (before check-out):
+```javascript
+{
+  "data": {
+    "checkoutCart": {
+      "email": "james@gmail.com",
+      "name": "James White",
+      "cart": {
+        "cart_items": [
+          {
+            "product_id": 3,
+            "amount": 3
+          },
+          {
+            "product_id": 2,
+            "amount": 5
+          }
+        ],
+        "cart_total_cost": 900.72
+      }
+    }
+  }
+}
+```
 
 Note: If multiple users add items to their cart and then sequentially start checking out items, it is possible a user that checks out an item at a later time may not actually be able to buy the item since there is no longer sufficient stock. In this case, the later user’s cart is cleared and an appropriate error message is returned.
 
