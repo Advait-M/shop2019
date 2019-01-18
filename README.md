@@ -10,7 +10,55 @@ The following documentation outlines the use of a Web API created for Shopify's 
 
 ### Remove item(s) from inventory
 
-### Add item(s) from inventory
+### Add item(s) to inventory
+Adding a new product request:
+```javascript
+mutation {
+  addProduct(id: 1, title: "hat", price: 10.50, inventory_count: 5) {
+    id
+    title
+    price
+    inventory_count
+  }
+}
+```
+
+Result:
+```javascript
+{
+  "data": {
+    "addProduct": {
+      "id": 1,
+      "title": "hat",
+      "price": 10.5,
+      "inventory_count": 5
+    }
+  }
+}
+```
+
+If you try to add a product with a duplicate key:
+```javascript
+{
+  "errors": [
+    {
+      "message": "E11000 duplicate key error index: shopdb.products.$id_1 dup key: { : 2 }",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "addProduct"
+      ]
+    }
+  ],
+  "data": {
+    "addProduct": null
+  }
+}
+```
 
 ### Purchase item(s) (add to shopping cart)
 Request:
