@@ -37,7 +37,7 @@ Result:
 }
 ```
 
-If you try to add a product with a duplicate key:
+If you try to add a product with a duplicate key, you will get the following error:
 ```javascript
 {
   "errors": [
