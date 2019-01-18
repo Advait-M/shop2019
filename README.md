@@ -162,6 +162,32 @@ query {
 }
 ```
 
+Result:
+```javascript
+{
+  "data": {
+    "users": [
+      {
+        "email": "james@gmail.com",
+        "name": "James White",
+        "cart": {
+          "cart_items": [],
+          "cart_total_cost": 0
+        }
+      },
+      {
+        "email": "bob@gmail.com",
+        "name": "Bob Smith",
+        "cart": {
+          "cart_items": [],
+          "cart_total_cost": 0
+        }
+      }
+    ]
+  }
+}
+```
+
 Note: Mutations return original objects before mutations are applied! You must query once again to obtain the mutated object's details, if the mutations were successful!
 
 Note 2: If checking out a cart results in a product that has insufficient stock being requested then the user's entire cart is cleared and the request is rejected.
