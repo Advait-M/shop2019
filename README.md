@@ -2,7 +2,7 @@
 ### By Advait Maybhate
 
 # Summary
-The following documentation outlines the use of a Web API created for Shopify's backend developer 2019 internship application. The API is built using **Node.js** and **MongoDB** (using **mLab** to host the database and **Heroku** to host the server) with the **GraphQL** language and can be accessed at `https://shop2019.herokuapp.com/graphql` with sample queries taking the form of `https://shop2019.herokuapp.com/graphql/?query=*INSERT GRAPHQL QUERY HERE*`. It is also possible to host the server locally at `http://localhost:5000` by running `npm install` and then `npm start` (default port is 5000). Examples of sample queries and mutations are provided below in addition to a detailed description of the schema itself. 
+The following documentation outlines the use of a Web API created for Shopify's backend developer 2019 internship application. The API is built using **Node.js** and **MongoDB** (using **mLab** to host the database and **Heroku** to host the server) with the **GraphQL** language and can be accessed at `https://shop2019.herokuapp.com/graphql` with sample queries taking the form of `https://shop2019.herokuapp.com/graphql/?query=*INSERT GRAPHQL QUERY HERE*`. It is also possible to host the server locally at `localhost:5000` by running `npm install` and then `npm start` (default port is 5000). Examples of sample queries and mutations are provided below in addition to a detailed description of the schema itself. 
 
 ### Implemented Features
 - GraphQL API
